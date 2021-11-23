@@ -1,5 +1,4 @@
-//TODO 1.0   package naming convention, improve package declaration
-package com.organization.mvcproject.MGL_Task1.controller;
+package com.organization.mvcproject.MGLTask1.controller;
 
 import java.util.List;
 
@@ -14,17 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.organization.mvcproject.MGL_Task1.model.Game;
-import com.organization.mvcproject.MGL_Task1.model.Review;
-import com.organization.mvcproject.MGL_Task1.service.Game_Service;
+import com.organization.mvcproject.MGLTask1.model.Game;
+import com.organization.mvcproject.MGLTask1.model.Review;
+import com.organization.mvcproject.MGLTask1.service.GameService;
 
-//TODO 1.0  follow java class naming, improve class name
+
 @Controller
-public class MGL_Task1_Controller {
+public class MGLTask1Controller {
 
-	//TODO 1.0 variable naming convention, improve reference name
 	@Autowired
-	private Game_Service javaGameService;
+	private GameService javaGameService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
@@ -40,6 +38,7 @@ public class MGL_Task1_Controller {
 	 */
 		return new ModelAndView("review", "command", new Review());
 	}
+	
 
 	@RequestMapping(value = "/addReview", method = RequestMethod.POST)
 	public ModelAndView addReview(Review review, ModelMap model) {
