@@ -11,6 +11,7 @@ angular.module('MGL_Task1_app').controller('MGL_Task1_Controller',
 			self.games = [];
 
 			self.fetchAllGames = function(){
+			console.log("calling fetch all games");
 				MGL_Task1_Service.fetchAllGames().then(function(data) {
 					self.games = data;
 				});

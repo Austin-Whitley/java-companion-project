@@ -28,19 +28,19 @@ public class GameServiceImpl implements GameService {
 	private static List<Game> populateGames() {
 
 		Game game1 = new Game();
-		game1.setGameId(++gameId);
-		game1.setGameGenre("Sport");
-		game1.setGameName("Rocket League");
+		game1.setId(++gameId);
+		game1.setGenre("Sport");
+		game1.setName("Rocket League");
 
 		Game game2 = new Game();
-		game2.setGameId(++gameId);
-		game2.setGameGenre("Shooter");
-		game2.setGameName("Halo 3");
+		game2.setId(++gameId);
+		game2.setGenre("Shooter");
+		game2.setName("Halo 3");
 
 		Game game3 = new Game();
-		game3.setGameId(++gameId);
-		game3.setGameGenre("MMORPG");
-		game3.setGameName("Runescape");
+		game3.setId(++gameId);
+		game3.setGenre("MMORPG");
+		game3.setName("Runescape");
 
 		games.add(game1);
 		games.add(game2);
@@ -56,7 +56,7 @@ public class GameServiceImpl implements GameService {
 
 	@Override
 	public Game saveGame(Game game) {
-		game.setGameId(++gameId);
+		game.setId(++gameId);
 		games.add(game);
 		return game;
 	}
