@@ -1,11 +1,11 @@
-package com.organization.mvcproject.MGLTask1.service;
+package com.organization.mvcproject.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.organization.mvcproject.MGLTask1.model.Game;
+import com.organization.mvcproject.model.Game;
 
 @Service
 public class GameServiceImpl implements GameService {

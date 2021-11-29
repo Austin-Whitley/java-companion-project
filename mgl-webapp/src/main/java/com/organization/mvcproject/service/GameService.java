@@ -1,8 +1,8 @@
-package com.organization.mvcproject.MGLTask1.service;
+package com.organization.mvcproject.service;
 
 import java.util.List;
 
-import com.organization.mvcproject.MGLTask1.model.Game;
+import com.organization.mvcproject.model.Game;
 
 
 public interface GameService{

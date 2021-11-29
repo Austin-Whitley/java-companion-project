@@ -1,5 +1,5 @@
 
-package com.organization.mvcproject.MGLTask1.model;
+package com.organization.mvcproject.model;
 
 import java.util.List;
 //import org.springframework.stereotype.Component;

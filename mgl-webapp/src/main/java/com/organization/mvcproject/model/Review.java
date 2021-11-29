@@ -1,4 +1,4 @@
-package com.organization.mvcproject.MGLTask1.model;
+package com.organization.mvcproject.model;
 
 public class Review {
 	

@@ -1,4 +1,4 @@
-package com.organization.mvcproject.MGLTask1.controller;
+package com.organization.mvcproject.controller;
 
 import java.util.List;
 
@@ -13,16 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.organization.mvcproject.MGLTask1.model.Game;
-import com.organization.mvcproject.MGLTask1.model.Review;
-import com.organization.mvcproject.MGLTask1.service.GameService;
+import com.organization.mvcproject.model.Game;
+import com.organization.mvcproject.model.Review;
+import com.organization.mvcproject.service.GameService;
 
 
 @Controller
-public class MGLTask1Controller {
+public class GamePageController {
 
 	@Autowired
-	private GameService javaGameService;
+	private GameService gameService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
@@ -59,16 +59,14 @@ public class MGLTask1Controller {
 	 * TODO 2.0 (Separation of concerns) consider moving all controller endpoints that return a ResponseEntity into a @RestController.
 	 */
 	
-	//TODO 1.0 RequestMapping URL should follow RESTful.
 	@RequestMapping(value = "/game/get", method = RequestMethod.GET)
 	public ResponseEntity<List<Game>> fetchAllGames() {
-		return new ResponseEntity<List<Game>>(javaGameService.retrieveAllGames(), HttpStatus.OK);
+		return new ResponseEntity<List<Game>>(gameService.retrieveAllGames(), HttpStatus.OK);
 	}
 
-	//TODO 1.0 RequestMapping URL should follow RESTful convention
 	@RequestMapping(value = "/game/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> createGame(@RequestBody Game game) {
-		javaGameService.saveGame(game);
+		gameService.saveGame(game);
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
 }
