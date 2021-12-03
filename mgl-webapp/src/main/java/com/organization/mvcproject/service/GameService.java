@@ -10,5 +10,9 @@ public interface GameService{
 	List<Game> retrieveAllGames();
 
 	Game saveGame(Game game);
+	
+	Boolean deleteGame(Long gameId);
+	
+	Game updateGame(Game game);
 
 }
