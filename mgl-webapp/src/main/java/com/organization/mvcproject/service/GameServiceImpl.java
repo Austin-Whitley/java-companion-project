@@ -33,7 +33,7 @@ public class GameServiceImpl implements GameService {
 
 	@Override
 	public Game updateGame(Game game) {
-		return gameDaoMock.updateGame(game);
+		return gameDaoMock.saveGame(game);
 	}
 
 }

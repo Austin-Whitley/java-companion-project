@@ -55,18 +55,4 @@ public class GamePageController {
 		return new ModelAndView("gamesPage", "command", new Game());
 	}
 
-	/**
-	 * TODO 2.0 (Separation of concerns) consider moving all controller endpoints that return a ResponseEntity into a @RestController.
-	 */
-	
-//	@RequestMapping(value = "/game/get", method = RequestMethod.GET)
-//	public ResponseEntity<List<Game>> fetchAllGames() {
-//		return new ResponseEntity<List<Game>>(gameService.retrieveAllGames(), HttpStatus.OK);
-//	}
-//
-//	@RequestMapping(value = "/game/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-//	public ResponseEntity<Void> createGame(@RequestBody Game game) {
-//		gameService.saveGame(game);
-//		return new ResponseEntity<Void>(HttpStatus.CREATED);
-//	}
 }

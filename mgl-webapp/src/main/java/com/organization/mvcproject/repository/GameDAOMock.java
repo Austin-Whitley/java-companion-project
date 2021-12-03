@@ -49,6 +49,22 @@ public class GameDAOMock {
 
 	
 	public Game saveGame(Game game) {
+		
+		//update if the id already exists
+		if(game.getId() != null) {
+			Game foundGame = findGameById(game.getId());
+			if(foundGame != null) {
+				//update the game found in the list
+				for(int i = 0; i < games.size(); i++) {
+					if(game.getId().equals(games.get(i).getId())) {
+						games.set(i, game);
+						//if the database made changes
+						return findGameById(game.getId());
+					}
+				}
+			}
+		}
+		//create new game
 		game.setId(++gameId);
 		games.add(game);
 		return game;
@@ -56,16 +72,20 @@ public class GameDAOMock {
 
 
 	public Boolean deleteGameById(Long gameId) {
-		for(int i = 0; i < games.size(); i ++) {
-			if(games.get(i).getId().equals(gameId)){
-				games.remove(i);
-				return true;
-			}
+		try{
+			return games.remove(findGameById(gameId));
+		}catch(NullPointerException npe) {
+			return false;
 		}
-		return false;
 	}
 	
-	public Game updateGame(Game game) {
+	
+	public Game findGameById(Long gameId) {
+		for(Game g: games) {
+			if(g.getId() == gameId) {
+				return g;
+			}
+		}
 		return null;
 	}
 
