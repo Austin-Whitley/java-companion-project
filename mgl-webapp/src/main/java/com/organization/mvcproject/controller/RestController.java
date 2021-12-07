@@ -44,7 +44,7 @@ public class RestController {
 	}
 	
 	//delete
-	@DeleteMapping(value = "/{id}")
+	@DeleteMapping(value = "game/{id}")
 	public ResponseEntity<?> deleteGame(@PathVariable("id") Long id){
 		
 		return new ResponseEntity<>(gameService.deleteGame(id), HttpStatus.OK);

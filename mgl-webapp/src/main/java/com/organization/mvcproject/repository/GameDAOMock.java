@@ -81,7 +81,14 @@ public class GameDAOMock {
 	}
 
 
+
 	public boolean deleteGameById(Long gameId) {
+//		for(int i = 0; i <= games.size(); i++) {
+//			if(games.get(i).getId() == gameId) {
+//				games.remove(games.get(i));
+//				return true;
+//			}
+//		}
 		for(Game game : games) {
 			if(game.getId() == gameId) {
 				games.remove(game);

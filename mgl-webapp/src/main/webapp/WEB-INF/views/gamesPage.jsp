@@ -84,6 +84,10 @@
                             <tr ng-repeat="currentGame in MGL_T1_ctrl.games">
                                 <td><span ng-bind="currentGame.name"></span></td>
                                 <td><span ng-bind="currentGame.genre"></span></td>
+                                <!-- update and delete buttons -->
+                                <td></td>
+                                <td><button data-ng-click="MGL_T1_ctrl.selectGame(currentGame)" class="btn btn-secondary btn-sm">select</button></td>
+                                <td><button data-ng-click="MGL_T1_ctrl.deleteGame(currentGame)" class="btn btn-secondary btn-sm">delete</button></td>
                                 <td>
                                 </td>
                             </tr>
