@@ -46,6 +46,16 @@ public class GameDAOMock {
 	public List<Game> retrieveAllGames() {
 		return games;
 	}
+	
+	public List<Game> findGamesByGenre(String genre){
+		List<Game> genreList = new ArrayList<>();
+		for(Game game: games) {
+			if(game.getGenre().equalsIgnoreCase(genre)) {
+				genreList.add(game);
+			}
+		}
+		return (genreList.isEmpty()) ? null : genreList;
+	}
 
 	
 	public Game saveGame(Game game) {
@@ -71,12 +81,14 @@ public class GameDAOMock {
 	}
 
 
-	public Boolean deleteGameById(Long gameId) {
-		try{
-			return games.remove(findGameById(gameId));
-		}catch(NullPointerException npe) {
-			return false;
+	public boolean deleteGameById(Long gameId) {
+		for(Game game : games) {
+			if(game.getId() == gameId) {
+				games.remove(game);
+				return true;
+			}
 		}
+		return false;
 	}
 	
 	

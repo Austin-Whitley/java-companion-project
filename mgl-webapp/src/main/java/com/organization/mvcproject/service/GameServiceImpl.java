@@ -27,13 +27,18 @@ public class GameServiceImpl implements GameService {
 	}
 	
 	@Override
-	public Boolean deleteGame(Long gameId) {
+	public boolean deleteGame(Long gameId) {
 		return gameDaoMock.deleteGameById(gameId);
 	}
 
 	@Override
 	public Game updateGame(Game game) {
 		return gameDaoMock.saveGame(game);
+	}
+	
+	@Override
+	public List<Game> findGamesByGenre(String genre){
+		return gameDaoMock.findGamesByGenre(genre);
 	}
 
 }

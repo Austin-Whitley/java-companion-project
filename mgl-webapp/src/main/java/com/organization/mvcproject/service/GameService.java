@@ -8,10 +8,12 @@ import com.organization.mvcproject.model.Game;
 public interface GameService{
 
 	List<Game> retrieveAllGames();
+	
+	List<Game> findGamesByGenre(String genre);
 
 	Game saveGame(Game game);
 	
-	Boolean deleteGame(Long gameId);
+	boolean deleteGame(Long gameId);
 	
 	Game updateGame(Game game);
 
