@@ -6,7 +6,7 @@
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
         <script src="resources/static/js/app.js" ></script>
-        <script src="resources/static/js/MGL_Task1.service.js"></script>
+        <script src="resources/static/js/gameService.js"></script>
         <script src="resources/static/js/MGL_Task1.controller.js"></script>
 
         <!-- Bootstrap CSS -->
@@ -29,17 +29,17 @@
     <body ng-app="MGL_Task1_app" class="ng-cloak">
         <mgl:myNav/>
         <br>
-        <div class="container" ng-controller="MGL_Task1_Controller as MGL_T1_ctrl">
+        <div class="container" ng-controller="gameController as ctrl">
             <div class="panel panel-default">
                 <div class="panel-heading text-light"><span class="lead">Game Registration Form </span></div>
                 <div class="formcontainer">
-                    <form ng-submit="MGL_T1_ctrl.addGame()" name="gameForm" class="form-horizontal">
-                        <input type="hidden" ng-model="MGL_T1_ctrl.game.game_id" />
+                    <form ng-submit="ctrl.addGame()" name="gameForm" class="form-horizontal">
+                        <input type="hidden" ng-model="ctrl.game.game_id" />
                         <div class="row">
                             <div class="form-group col-md-12">
                                 <label class="col-md-2 control-lable text-light" for="gameName">Name*</label>
                                 <div class="col-md-7">
-                                    <input type="text" ng-model="MGL_T1_ctrl.game.name" id="gameName" class="gameName form-control input-sm" placeholder="Enter the name of the new game [required]" required ng-minlength="3" />
+                                    <input type="text" ng-model="ctrl.game.name" id="gameName" class="gameName form-control input-sm" placeholder="Enter the name of the new game [required]" required ng-minlength="3" />
                                     <div class="has-error" ng-show="gameForm.$dirty">
                                     <!-- changed game_name to gameName -->
                                         <span ng-show="gameForm.game_name.$error.required">This is a required field</span>
@@ -55,7 +55,7 @@
                             <!-- changed game_genre to gameGenre -->
                                 <label class="col-md-2 control-lable text-light" for="gameGenre">Game Genre</label>
                                 <div class="col-md-7">
-                                    <input type="text" ng-model="MGL_T1_ctrl.game.genre" id="gameGenre" class="form-control input-sm" placeholder="Enter the genre of the new game" />
+                                    <input type="text" ng-model="ctrl.game.genre" id="gameGenre" class="form-control input-sm" placeholder="Enter the genre of the new game" />
                                 </div>
                             </div>
                         </div>
@@ -81,13 +81,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="currentGame in MGL_T1_ctrl.games">
+                            <tr ng-repeat="currentGame in ctrl.games">
                                 <td><span ng-bind="currentGame.name"></span></td>
                                 <td><span ng-bind="currentGame.genre"></span></td>
                                 <!-- update and delete buttons -->
                                 <td></td>
-                                <td><button data-ng-click="MGL_T1_ctrl.selectGame(currentGame)" class="btn btn-secondary btn-sm">select</button></td>
-                                <td><button data-ng-click="MGL_T1_ctrl.deleteGame(currentGame)" class="btn btn-secondary btn-sm">delete</button></td>
+                                <td><button data-ng-click="ctrl.selectGame(currentGame)" class="btn btn-secondary btn-sm">select</button></td>
+                                <td><button data-ng-click="ctrl.deleteGame(currentGame)" class="btn btn-secondary btn-sm">delete</button></td>
                                 <td>
                                 </td>
                             </tr>
