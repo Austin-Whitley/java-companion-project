@@ -7,7 +7,9 @@ angular.module('MGL_Task1_app').factory('gameService', ['$http','$log', function
 		var factory = {
 			fetchAllGames : fetchAllGames,
 			createGame : createGame,
-			deleteGame : deleteGame
+			deleteGame : deleteGame,
+			updateGame : updateGame,
+			filterByGenre : filterByGenre
 		};
 
 		return factory;
@@ -36,6 +38,19 @@ angular.module('MGL_Task1_app').factory('gameService', ['$http','$log', function
 				}
 				return response.data;
 			});
+		}
+		
+		function updateGame(game) {
+			return $http.put(REST_SERVICE_URI + 'create', game).then(function(response) {
+					return response.data;
+				}
+			); 
+		}
+		
+		function filterByGenre(genreName){
+			return $http.get(REST_SERVICE_URI, {params: {genre: genreName}}).then(function(response){
+				return response.data;
+			})
 		}
 
 }]);

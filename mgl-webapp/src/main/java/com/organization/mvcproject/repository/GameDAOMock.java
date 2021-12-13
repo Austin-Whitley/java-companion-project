@@ -2,6 +2,7 @@ package com.organization.mvcproject.repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
 
@@ -56,6 +57,12 @@ public class GameDAOMock {
 		}
 		return (genreList.isEmpty()) ? null : genreList;
 	}
+	
+//	public List<Game> findGamesByGenre(String genre) {
+//		return games.stream()
+//				  .filter(game -> genre.equals(game.getGenre()))
+//				  .collect(Collectors.toList());
+//	}
 
 	
 	public Game saveGame(Game game) {
@@ -83,12 +90,6 @@ public class GameDAOMock {
 
 
 	public boolean deleteGameById(Long gameId) {
-//		for(int i = 0; i <= games.size(); i++) {
-//			if(games.get(i).getId() == gameId) {
-//				games.remove(games.get(i));
-//				return true;
-//			}
-//		}
 		for(Game game : games) {
 			if(game.getId() == gameId) {
 				games.remove(game);

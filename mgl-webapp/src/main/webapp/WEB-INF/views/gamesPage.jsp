@@ -34,7 +34,7 @@
                 <div class="panel-heading text-light"><span class="lead">Game Registration Form </span></div>
                 <div class="formcontainer">
                     <form ng-submit="ctrl.addGame()" name="gameForm" class="form-horizontal">
-                        <input type="hidden" ng-model="ctrl.game.game_id" />
+                        <input type="hidden" ng-model="ctrl.game.id" />
                         <div class="row">
                             <div class="form-group col-md-12">
                                 <label class="col-md-2 control-lable text-light" for="gameName">Name*</label>
@@ -62,7 +62,9 @@
 
                         <div class="row">
                             <div class="form-actions floatRight">
-                                <input type="submit" value="Add" class="btn btn-primary btn-sm">
+                                <input data-ng-if="!ctrl.game || !ctrl.game.id" type="submit" value="Add" class="btn btn-primary btn-sm">
+                                <button data-ng-if="ctrl.game.id" data-ng-click="ctrl.updateGame()" class="btn btn-secondary btn-sm">Update</button>
+                            	<button data-ng-if="ctrl.game" data-ng-click="ctrl.resetForm()" type="reset" class="btn btn-secondary btn-sm">Clear</button>
                             </div>
                         </div>
                     </form>
@@ -71,6 +73,14 @@
             <div class="panel panel-default">
                 <!-- Default panel contents -->
                 <div class="panel-heading text-light"><span class="lead">List of all current games</span></div>
+                <span data-ng-if="ctrl.genres.length > 1"><span class="lead"> | </span>
+				<label style="color: white" class="lead" for="select_genre_filter">Filter by Genre</label>
+				<select id="select_genre_filter"
+					data-ng-options="genre.name as genre.name for genre in ctrl.genres"
+					data-ng-model="ctrl.selectedGenre"
+					data-ng-change="ctrl.fetchAllGames()">
+				</select>
+				</span>
                 <div class="tablecontainer">
                     <table class="table table-dark table-striped text-light">
                         <thead>

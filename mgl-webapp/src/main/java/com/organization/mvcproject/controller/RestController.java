@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import com.organization.mvcproject.model.Game;
 import com.organization.mvcproject.service.GameService;
@@ -28,6 +30,15 @@ public class RestController {
 	public ResponseEntity<List<Game>> fetchAllGames() {
 		return new ResponseEntity<List<Game>>(gameService.retrieveAllGames(), HttpStatus.OK);
 	}
+	
+	@GetMapping(value = "/game/")
+	public ResponseEntity<?> fetchAllGames(@RequestParam(required = false) String genre) {
+		if(genre != null) {
+			return new ResponseEntity<>(gameService.findGamesByGenre(genre), HttpStatus.OK);
+		}
+		
+		return new ResponseEntity<>(gameService.retrieveAllGames(), HttpStatus.OK);
+	}
 
 	//create
 	@RequestMapping(value = "/game/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -38,9 +49,8 @@ public class RestController {
 	
 	//update
 	@PutMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Void> updateGame(@RequestBody Game game){
-		gameService.updateGame(game);
-		return new ResponseEntity<Void>(HttpStatus.OK);
+	public ResponseEntity<?> updateGame(@RequestBody Game game){
+		return new ResponseEntity<>(gameService.saveGame(game), HttpStatus.OK);
 	}
 	
 	//delete
